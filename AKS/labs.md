@@ -46,6 +46,6 @@ az aks create \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
-    --network-policy azure \
+    --network-policy calico \
     --enable-addons monitoring 
 
