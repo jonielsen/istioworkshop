@@ -1,8 +1,11 @@
 ```Prerequisites```
 
 SP_PASSWORD=mySecurePassword
+
 RESOURCE_GROUP_NAME=myResourceGroup-NP
+
 CLUSTER_NAME=myAKSCluster
+
 LOCATION=canadaeast
 
 
