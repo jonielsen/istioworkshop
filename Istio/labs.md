@@ -37,7 +37,7 @@ kubectl get svc --namespace istio-system --output wide
 # Configure GRAFANA andd KIALI to work with the Istio install
 
 
-```GRAFANA_USERNAME=$(echo -n "grafana" | base64)
+GRAFANA_USERNAME=$(echo -n "grafana" | base64)
 GRAFANA_PASSPHRASE=$(echo -n "REPLACE_WITH_YOUR_SECURE_PASSWORD" | base64)
 
 cat <<EOF | kubectl apply -f -
@@ -52,10 +52,10 @@ type: Opaque
 data:
   username: $GRAFANA_USERNAME
   passphrase: $GRAFANA_PASSPHRASE
-EOF```
+EOF
 
 
-```KIALI_USERNAME=$(echo -n "kiali" | base64)
+KIALI_USERNAME=$(echo -n "kiali" | base64)
 KIALI_PASSPHRASE=$(echo -n "REPLACE_WITH_YOUR_SECURE_PASSWORD" | base64)
 
 cat <<EOF | kubectl apply -f -
@@ -70,7 +70,7 @@ type: Opaque
 data:
   username: $KIALI_USERNAME
   passphrase: $KIALI_PASSPHRASE
-EOF```
+EOF
 
 # Configure the Add-on Istio services
 
