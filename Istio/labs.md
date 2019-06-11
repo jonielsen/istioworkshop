@@ -34,6 +34,9 @@ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
 
 kubectl get svc --namespace istio-system --output wide
 
+# Configure GRAFANA to work with the Istio install
+
+
 ```GRAFANA_USERNAME=$(echo -n "grafana" | base64)
 GRAFANA_PASSPHRASE=$(echo -n "REPLACE_WITH_YOUR_SECURE_PASSWORD" | base64)
 
@@ -51,6 +54,7 @@ data:
   passphrase: $GRAFANA_PASSPHRASE
 EOF```
 
+# Configure KIALI to work with the Istio install
 
 ```KIALI_USERNAME=$(echo -n "kiali" | base64)
 KIALI_PASSPHRASE=$(echo -n "REPLACE_WITH_YOUR_SECURE_PASSWORD" | base64)
@@ -68,8 +72,6 @@ data:
   username: $KIALI_USERNAME
   passphrase: $KIALI_PASSPHRASE
 EOF```
-
-
 
 # Configure the Add-on Istio services
 
