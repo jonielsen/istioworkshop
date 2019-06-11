@@ -5,7 +5,7 @@ RESOURCE_GROUP_NAME=myResourceGroup-NP
 CLUSTER_NAME=myAKSCluster
 LOCATION=canadaeast
 
-# Create a resource group
+```Create a resource group```
 az group create --name $RESOURCE_GROUP_NAME --location $LOCATION
 
 # Create a virtual network and subnet
