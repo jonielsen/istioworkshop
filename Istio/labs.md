@@ -22,16 +22,6 @@ Verify the CRDs installed correctly
 
 kubectl get jobs -n istio-system
 
-# Install Istio on AKS
-
-helm install install/kubernetes/helm/istio --name istio --namespace istio-system \
-  --set global.controlPlaneSecurityEnabled=true \
-  --set mixer.adapters.useAdapterCRDs=false \
-  --set grafana.enabled=true --set grafana.security.enabled=true \
-  --set tracing.enabled=true \
-  --set kiali.enabled=true
-
-
 kubectl get svc --namespace istio-system --output wide
 
 # Configure GRAFANA andd KIALI to work with the Istio install
@@ -60,6 +50,7 @@ EOF
 KIALI_USERNAME=$(echo -n "kiali" | base64) \
 KIALI_PASSPHRASE=$(echo -n "REPLACE_WITH_YOUR_SECURE_PASSWORD" | base64) \
 
+```
 cat <<EOF | kubectl apply -f - \
 apiVersion: v1 \
 kind: Secret \
@@ -73,8 +64,21 @@ data: \
   username: $KIALI_USERNAME \
   passphrase: $KIALI_PASSPHRASE \
 EOF 
+```
 
-# Configure the Add-on Istio services 
+# Install Istio on AKS
+
+helm install install/kubernetes/helm/istio --name istio --namespace istio-system \
+  --set global.controlPlaneSecurityEnabled=true \
+  --set mixer.adapters.useAdapterCRDs=false \
+  --set grafana.enabled=true --set grafana.security.enabled=true \
+  --set tracing.enabled=true \
+  --set kiali.enabled=true
+
+
+# Verify Istio Add-On services are running
+
+
 
 kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000
 
