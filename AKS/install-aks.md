@@ -30,6 +30,7 @@ VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP_NAME --name myVn
 # Assign the service principal Contributor permissions to the virtual network resource
 az role assignment create --assignee $SP_ID --scope $VNET_ID --role Contributor
 
+# Get the virtual network subnet resource ID
 SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP_NAME --vnet-name myVnet --name myAKSSubnet --query id -o tsv)
 
 # Create the AKS cluster and specify the virtual network and service principal information
