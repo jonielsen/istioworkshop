@@ -75,16 +75,3 @@ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
   --set tracing.enabled=true \
   --set kiali.enabled=true
 
-
-# Verify Istio Add-On services are running
-
-
-
-kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000
-
-
-#Add a label to make sure the Envoy proxy is injected
-
-kubectl label namespace default istio-injection=enabled
-
-
