@@ -13,6 +13,6 @@ kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=ja
 kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=kiali -o jsonpath='{.items[0].metadata.name}') 20001:20001
 ```
 
-# Add a lable to the default namespace, so the Envoy Proxy get injected
+# Add the istio-injection label to the default namespace. 
 
 kubectl label namespace default istio-injection=enabled
