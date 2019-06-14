@@ -1,6 +1,4 @@
-# Introduction to AKS, Istio & Calico - 1 hour
-
-# Pre-reqs
+# AKS Install - 20-30 minutes
 
 SP_PASSWORD=mySecurePassword \
 RESOURCE_GROUP_NAME=myResourceGroup-NP \
