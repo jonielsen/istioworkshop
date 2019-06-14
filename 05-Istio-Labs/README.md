@@ -23,12 +23,13 @@ kubectl get pods
 
 The following example output shows there are three different versions of the web application running in the cluster. Each of the pods has two containers. One of these containers is the web app, and the other is the istio-proxy:
 
+```
 jordan@Azure:~$ kubectl get pods
 NAME                          READY   STATUS    RESTARTS   AGE
 web-v1-799fc6769f-xlqq2       2/2     Running   0          7h16m
 web-v2-76c8d8bbfd-6qsn6       2/2     Running   0          7h16m
 web-v3-659f996db9-n9lgs       2/2     Running   0          7h16m
-
+```
 
 To see information about the pod, use the kubectl describe pod. Replace the pod name with the name of a pod in your own AKS cluster from the previous output:
 
