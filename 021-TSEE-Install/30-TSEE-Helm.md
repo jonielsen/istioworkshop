@@ -34,7 +34,7 @@ Upload these Helm charts along with the Tigera pull secret (aks-tsee-workshop-au
 Deploy TSEE Core
 
 ```
-helm install ./tigera-secure-ee-aks-v2.4.1-0.tgz  --namespace calico-monitoring --set createCustomResources=false --set-file imagePullSecrets.cnx-pull-secret=../aks-workshop/aks-tsee-workshop-auth.json
+helm install ./tigera-secure-ee-aks-v2.4.1-0.tgz  --namespace calico-monitoring --set createCustomResources=false --set-file imagePullSecrets.cnx-pull-secret=./aks-tsee-workshop-auth.json
 
 watch kubectl get pods -n kube-system -o wide
 ```
@@ -49,7 +49,7 @@ kubectl rollout status -n kube-system deployment/cnx-apiserver
 
 Apply the TSEE License and failsafe policies
 ```
-kubectl apply -f ../aks-workshop/tigera-aks-workshop-license.yaml
+kubectl apply -f ./tigera-aks-workshop-license.yaml
 kubectl apply -f https://docs.tigera.io/v2.4/getting-started/kubernetes/installation/hosted/cnx/1.7/cnx-policy.yaml
 ```
 
