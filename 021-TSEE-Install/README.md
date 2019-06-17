@@ -5,24 +5,23 @@
 
 ### 1. Deploy AKS
 
-[AKS Deployment](10-AKS-Install.md)
+[AKS Deployment](../02-AKS-Install/README.md)
 
 
 ### 2. Alternative A: Deploy TSEE with Helm
 
-Helm Deployment Guide
+[Helm Deployment Guide] 30-TSEE-Helm.md
 
 
 
 ### 2. Alternative B: Deploy TSEE manually
 
-[Deploying TSEE Manually](30-TSEE-Manual.md)
-
+Steps available on request
 
 
 ### 3. Deploy ALP and Istio
 
-[Deploy Istio and ALP](40-ALP-Install.md)
+[Deploy Istio and ALP](../03-Istio-with-ALP/40-ALP-Install.md)
 
 
 ### 4. YaoBank Tutorial
