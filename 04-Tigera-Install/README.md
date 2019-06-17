@@ -1,3 +1,2 @@
-# Introduction to AKS, Istio & Calico - 1 hour
+# Calico Install - 15 minds
 
-## Resources

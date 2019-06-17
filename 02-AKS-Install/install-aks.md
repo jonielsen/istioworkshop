@@ -1,15 +1,14 @@
-# Pre-reqs
-
+# Pre-requisites
+```
 SP_PASSWORD=mySecurePassword \
 RESOURCE_GROUP_NAME=myResourceGroup-NP \
 CLUSTER_NAME=myAKSCluster \
 LOCATION=canadaeast
-
+```
 
 # Create resource group
 ```
 az group create --name $RESOURCE_GROUP_NAME --location $LOCATION
-
 ```
 
 # Create a virtual network and subnet
@@ -49,7 +48,7 @@ SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP_NAME --
 ```
 
 # Create the AKS cluster and specify the virtual network and service principal information
-# Deploy the cluster without the --network-policy option
+## Deploy the cluster without the --network-policy option
 ```
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
@@ -65,4 +64,3 @@ az aks create \
     --client-secret $SP_PASSWORD \
     --enable-addons monitoring 
 ```
-
