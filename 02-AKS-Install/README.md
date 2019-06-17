@@ -55,9 +55,9 @@ az role assignment create --assignee $SP_ID --scope $VNET_ID --role Contributor
 SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP_NAME --vnet-name myVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-# Create the AKS cluster and specify the virtual network and service principal information
-# Deploy cluster without the --network-policy calico option
-# Min cluster size of 3 nodes is suggested due to various Istio components and Elastic sizing.
+Create the AKS cluster and specify the virtual network and service principal information
+Deploy cluster without the --network-policy calico option
+Min cluster size of 3 nodes is suggested due to various Istio components and Elastic sizing.
 
 ```
 az aks create \
