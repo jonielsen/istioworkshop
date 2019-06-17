@@ -56,13 +56,14 @@ SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP_NAME --
 ```
 
 # Create the AKS cluster and specify the virtual network and service principal information
-# Enable network policy by using the `--network-policy` parameter
+# Deploy cluster without the --network-policy calico option
+# Min cluster size of 3 nodes is suggested due to various Istio components and Elastic sizing.
 
 ```
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
-    --node-count 1 \
+    --node-count 3 \
     --generate-ssh-keys \
     --network-plugin azure \
     --service-cidr 10.0.0.0/16 \
@@ -71,6 +72,5 @@ az aks create \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
-    --network-policy calico \
     --enable-addons monitoring
 ```
