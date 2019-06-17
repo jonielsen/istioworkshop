@@ -2,7 +2,7 @@
 
 ## Overview
 
-09:30 – Check In<br>
+09:30 - Check In<br>
 10:00 - Intros & Overview<br>
 11:00 - Technical Discussion & Labs - Part 1<br>
 12:00 - Lunch<br>
