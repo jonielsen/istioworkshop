@@ -10,7 +10,7 @@
 
 ### 2. Alternative A: Deploy TSEE with Helm
 
-[Helm Deployment Guide] 30-TSEE-Helm.md
+[Helm Deployment Guide](30-TSEE-Helm.md)
 
 
 
@@ -26,4 +26,4 @@ Steps available on request
 
 ### 4. YaoBank Tutorial
 
-[YaoBank tutorial](tutorial/yaobank/README.md)
+[YaoBank tutorial](../06-Tigera-Lab1/yaobank/README.md)
