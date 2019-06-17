@@ -21,44 +21,7 @@ kubectl describe node <node-name> |grep reboot
 Proceed further after every node has rebooted. This might take a few minutes for your cluster, depending on it's size.
 
 
-### 2. Deploy Helm
-
-Deploy Helm
-
-```
-cat <<-EOF >helm-rbac.yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: tiller
-  namespace: kube-system
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: tiller
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-  - kind: ServiceAccount
-    name: tiller
-    namespace: kube-system
-EOF
-
-kubectl apply -f helm-rbac.yaml
-
-helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="linux"
-```
-
-Wait for Tiller to start and become ready (1/1)
-
-```
-watch kubectl get pods -n kube-system |grep tiller
-```
-
-### 3. Deploy TSEE Core
+### 2. Deploy TSEE Core
 
 ```
 wget <URL for AKS TSEE Core Helm Chart>
@@ -92,7 +55,7 @@ kubectl apply -f https://docs.tigera.io/v2.4/getting-started/kubernetes/installa
 
 
 
-### 4. Deploy TSEE Addons
+### 3. Deploy TSEE Addons
 
 Deploy TSEE Addons
 
@@ -103,7 +66,7 @@ watch kubectl get pods --all-namespaces -o wide
 
 This will take a few minutes. Proceed further after elastic-tsee-installer shows a status of "Completed".
 
-### 5. Access UI
+### 4. Access UI
 
 Create Service Account for UI Access
 ```
