@@ -2,12 +2,12 @@
 
 ## Overview
 
-9:30 AM – Check In<br>
-10:00 AM - Intros & Overview<br>
-11:00 AM - Technical Discussion & Labs - Part 1<br>
-12:00 PM - Lunch<br>
-12:30 PM - Technical Discussion & Labs - Part 2<br>
-1:50 PM - Wrap Up<br>
+09:30 – Check In<br>
+10:00 - Intros & Overview<br>
+11:00 - Technical Discussion & Labs - Part 1<br>
+12:00 - Lunch<br>
+12:30 - Technical Discussion & Labs - Part 2<br>
+13:50 - Wrap Up<br>
 
 ## Prerequisites - Installation of AKS Cluster
 1.
