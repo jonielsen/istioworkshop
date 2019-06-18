@@ -60,7 +60,8 @@ kubectl apply -f https://docs.tigera.io/v2.4/getting-started/kubernetes/installa
 Deploy TSEE Addons
 
 ```
-helm install ./tigera-secure-ee-aks-v2.4.1-0.tgz  --namespace calico-monitoring --set createCustomResources=false --set-file imagePullSecrets.cnx-pull-secret=../aks-workshop/aks-tsee-workshop-auth.json
+kubectl apply -f https://docs.tigera.io/v2.4/getting-started/kubernetes/installation/helm/tigera-secure-ee/operator-crds.yaml
+helm install ./tigera-secure-ee-aks-v2.4.1-0.tgz  --namespace calico-monitoring --set createCustomResources=false --set-file imagePullSecrets.cnx-pull-secret=./aks-tsee-workshop-auth.json
 watch kubectl get pods --all-namespaces -o wide
 ```
 
