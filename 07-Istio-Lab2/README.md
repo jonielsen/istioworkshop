@@ -24,7 +24,7 @@ cd istioworkshop/07-Istio-Lab2/
 Deploy the applications
 
 ```
-kubectl apply -f deployapp.yaml
+kubectl apply -f deploy-app.yaml
 ```
 
 Verify the application is running
@@ -33,10 +33,10 @@ Verify the application is running
 kubectl get pods 
 ```
 
-# Deploy the Destionrules and Virtual Service
+# Deploy the Destion rules and Virtual Service
 
 ```
-kubectl apply -f deployapp.yaml
+kubectl apply -f deploy-app.yaml
 ```
 
 # Configure the Gateway and Virtual Service to get traffic to the /productpage site 
