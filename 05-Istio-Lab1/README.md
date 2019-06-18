@@ -27,9 +27,17 @@ Switch to the Istio directory
 cd istioworkshop/05-Istio-Lab1/
 ```
 
-kubectl apply -f my-websites.yaml and verify the application is running
+Deploy the web application
 
+```
+kubectl apply -f my-websites.yaml and verify the application is running
+```
+
+Verify the application is running
+
+```
 kubectl get pods 
+```
 
 The following example output shows there are three different versions of the web application running in the cluster. Each of the pods has two containers. One of these containers is the web app, and the other is the istio-proxy:
 
