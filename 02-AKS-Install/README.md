@@ -55,14 +55,17 @@ az role assignment create --assignee $SP_ID --scope $VNET_ID --role Contributor
 SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP_NAME --vnet-name myVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-# Create the AKS cluster and specify the virtual network and service principal information
-# Enable network policy by using the `--network-policy` parameter
+Create the AKS cluster and specify the virtual network and service principal information.
+
+Deploy cluster without the --network-policy calico option.
+
+Min cluster size of 3 nodes is suggested due to various Istio components and Elastic sizing.
 
 ```
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
-    --node-count 1 \
+    --node-count 3 \
     --generate-ssh-keys \
     --network-plugin azure \
     --service-cidr 10.0.0.0/16 \
@@ -71,6 +74,44 @@ az aks create \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
-    --network-policy calico \
     --enable-addons monitoring
 ```
+
+
+# Deploy Helm
+
+Deploy Helm
+
+```
+cat <<-EOF >helm-rbac.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tiller
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tiller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: tiller
+    namespace: kube-system
+EOF
+
+kubectl apply -f helm-rbac.yaml
+
+helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="linux"
+```
+
+Wait for Tiller to start and become ready (1/1)
+
+```
+watch kubectl get pods -n kube-system |grep tiller
+```
+
