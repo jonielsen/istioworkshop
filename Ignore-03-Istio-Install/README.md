@@ -8,13 +8,18 @@ ISTIO_VERSION="1.1.3"
 curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-linux.tar.gz" | tar xz
 
 # Install the Istio CRDs on AKS
+```
 helm install install/kubernetes/helm/istio-init --name istio-init --namespace istio-system
+```
 
 Verify the CRDs installed correctly
 
+```
 kubectl get jobs -n istio-system
-
+```
+```
 kubectl get svc --namespace istio-system --output wide
+```
 
 # Configure GRAFANA andd KIALI to work with the Istio install
 
