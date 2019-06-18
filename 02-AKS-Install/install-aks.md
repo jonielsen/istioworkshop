@@ -64,3 +64,9 @@ az aks create \
     --client-secret $SP_PASSWORD \
     --enable-addons monitoring 
 ```
+
+#Set the context to the cluster that was just created
+
+```
+az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
+```
