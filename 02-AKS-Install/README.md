@@ -65,7 +65,7 @@ Min cluster size of 3 nodes is suggested due to various Istio components and Ela
 az aks create \
     --resource-group $RESOURCE_GROUP_NAME \
     --name $CLUSTER_NAME \
-    --node-count 3 \
+    --node-count 2 \
     --generate-ssh-keys \
     --network-plugin azure \
     --service-cidr 10.0.0.0/16 \
