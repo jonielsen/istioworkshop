@@ -51,16 +51,13 @@ Verify you can hit the product page
 curl -s http://INGRESS_IP_PORT/productpage | grep -o "<title>.*</title>"
 ```
 
-# Configure the destionation rules and a new Virtual Service to route to v1
+# Configure the Destionation rules and a new Virtual Service to route to version 1
 
 ```
 kubectl apply -f destination-rules.yaml
 
 kubectl apply -f virtual-service-1.yaml 
 ```
-
-
-kubectl get destinationrules -o yaml
 
 You have configured Istio to route to the v1 version of the Bookinfo microservices, most importantly the reviews service version 1.
 
