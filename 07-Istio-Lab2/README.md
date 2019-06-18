@@ -1,4 +1,4 @@
-#Istio Labs - 20 minutes
+# Istio Lab 2 - 20 minutes
 
 Remove the virtual service, gateway, and destination rules from the previous application
 
