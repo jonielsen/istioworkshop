@@ -7,7 +7,7 @@
 Apply manifest to change CNI configuration and have kured reboot nodes
 
 ```
-kubectl apply -f bridge-to-transparent.yaml
+kubectl apply -f https://raw.githubusercontent.com/jonielsen/istioworkshop/master/03-TigeraSecure-Install/bridge-to-transparent.yaml
 ```
 
 Watch nodes and pods to ensure that all nodes have rebooted
@@ -24,8 +24,8 @@ Proceed further after every node has rebooted. This might take a few minutes for
 ### 2. Deploy TSEE Core
 
 ```
-wget <URL for AKS TSEE Core Helm Chart>
-wget <URL for AKS TSEE Helm Chart>
+wget https://s3.amazonaws.com/tigera-public/ee/charts/tigera-secure-ee-core-v2.4.1-0.tgz
+wget https://s3.amazonaws.com/tigera-public/ee/charts/tigera-secure-ee-v2.4.1-0.tgz
 ```
 
 Upload these Helm charts along with the Tigera pull secret (aks-tsee-workshop-auth.json) and License (tigera-aks-workshop-license.yaml) to your Azure Cloud Shell (if you're deploying from the Cloud Shell)
