@@ -24,7 +24,7 @@ git clone https://github.com/jonielsen/istioworkshop.git
 Switch to the Istio directory
 
 ```
-cd Istio
+cd istioworkshop/05-Istio-Lab1/
 ```
 
 kubectl apply -f my-websites.yaml and verify the application is running
