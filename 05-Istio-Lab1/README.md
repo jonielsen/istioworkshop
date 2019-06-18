@@ -8,12 +8,17 @@ kubectl label namespace default istio-injection=enabled
 
 # Verify and record the Istio Ingress service public IP address
 
+```
 kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
-
+```
 
 # Install the first application for this workshop
 
 Clone down the following repo: https://github.com/jonielsen/istioworkshop.git
+
+```
+git clone https://github.com/jonielsen/istioworkshop.git
+```
 
 Switch to the Istio directory
 
