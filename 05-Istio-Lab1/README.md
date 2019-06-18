@@ -3,8 +3,9 @@
 
 # Add the istio-injection label to the default namespace.
 
+```
 kubectl label namespace default istio-injection=enabled
-
+```
 
 # Verify and record the Istio Ingress service public IP address
 
@@ -21,6 +22,10 @@ git clone https://github.com/jonielsen/istioworkshop.git
 ```
 
 Switch to the Istio directory
+
+```
+cd Istio
+```
 
 kubectl apply -f my-websites.yaml and verify the application is running
 
