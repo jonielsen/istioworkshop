@@ -82,7 +82,9 @@ This configuration will target only version1 one of the application.
 
 # Configure the Virtual Service to now send 10 percent of traffic to version2 and 90 percent to version1.
 
+```
 kubectl apply -f website-routing-v2.yaml
+```
 
 Test this in the browser and you should occasionally see traffic hit v2.
 
