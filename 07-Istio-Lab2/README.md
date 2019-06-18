@@ -33,12 +33,6 @@ Verify the application is running
 kubectl get pods 
 ```
 
-# Deploy the Destion rules and Virtual Service
-
-```
-kubectl apply -f deploy-app.yaml
-```
-
 # Configure the Gateway and Virtual Service to get traffic to the /productpage site 
 
 ```
