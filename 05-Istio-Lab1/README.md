@@ -52,7 +52,7 @@ web-v3-659f996db9-n9lgs       2/2     Running   0          7h16m
 To see information about the pod, use the kubectl describe pod. Replace the pod name with the name of a pod in your own AKS cluster from the previous output:
 
 ```
-kubectl describe pod (your pod name)
+kubectl describe pod web-pod
 ```
 
 The istio-proxy container has automatically been injected by Istio to manage the network traffic to and from the web application, as shown in the following example output:
