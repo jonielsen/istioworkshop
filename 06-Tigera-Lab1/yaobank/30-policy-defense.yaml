@@ -15,7 +15,7 @@
 apiVersion: projectcalico.org/v3
 kind: Tier
 metadata:
-  name: peira
+  name: lob-banking
 spec:
   order: 1500
 
