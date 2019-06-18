@@ -77,6 +77,13 @@ az aks create \
     --enable-addons monitoring
 ```
 
+# Set the context to the new cluster
+
+```
+az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
+
+```
+
 
 # Deploy Helm
 
