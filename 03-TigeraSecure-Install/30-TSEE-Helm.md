@@ -24,8 +24,8 @@ Proceed further after every node has rebooted. This might take a few minutes for
 ### 2. Deploy TSEE Core
 
 ```
-wget https://s3.amazonaws.com/tigera-public/ee/charts/tigera-secure-ee-core-v2.4.1-0.tgz
-wget https://s3.amazonaws.com/tigera-public/ee/charts/tigera-secure-ee-v2.4.1-0.tgz
+wget https://github.com/jonielsen/istioworkshop/blob/master/03-TigeraSecure-Install/tigera-secure-ee-core-aks-v2.4.1-0.tgz
+wget https://github.com/jonielsen/istioworkshop/blob/master/03-TigeraSecure-Install/tigera-secure-ee-aks-v2.4.1-0.tgz
 ```
 
 Upload these Helm charts along with the Tigera pull secret (aks-tsee-workshop-auth.json) and License (tigera-aks-workshop-license.yaml) to your Azure Cloud Shell (if you're deploying from the Cloud Shell)
@@ -34,7 +34,7 @@ Upload these Helm charts along with the Tigera pull secret (aks-tsee-workshop-au
 Deploy TSEE Core
 
 ```
-helm install ./tigera-secure-ee-aks-v2.4.1-0.tgz  --namespace calico-monitoring --set createCustomResources=false --set-file imagePullSecrets.cnx-pull-secret=./aks-tsee-workshop-auth.json
+helm install ./tigera-secure-ee-aks-v2.4.1-0.tgz --set-file imagePullSecrets.cnx-pull-secret=./aks-tsee-workshop-auth.json
 
 watch kubectl get pods -n kube-system -o wide
 ```
