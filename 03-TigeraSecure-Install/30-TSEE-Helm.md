@@ -7,7 +7,7 @@
 Apply manifest to change CNI configuration and have kured reboot nodes
 
 ```
-kubectl apply -f bridge-to-transparent.yaml
+kubectl apply -f https://raw.githubusercontent.com/jonielsen/istioworkshop/master/03-TigeraSecure-Install/bridge-to-transparent.yaml
 ```
 
 Watch nodes and pods to ensure that all nodes have rebooted
