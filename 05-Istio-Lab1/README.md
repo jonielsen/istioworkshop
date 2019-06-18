@@ -30,7 +30,7 @@ cd istioworkshop/05-Istio-Lab1/
 Deploy the web application
 
 ```
-kubectl apply -f my-websites.yaml and verify the application is running
+kubectl apply -f my-websites.yaml
 ```
 
 Verify the application is running
