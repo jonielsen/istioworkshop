@@ -21,7 +21,7 @@ Steps available on request
 
 ### 3. Deploy ALP and Istio
 
-[Deploy Istio and ALP](../03-Istio-with-ALP/40-ALP-Install.md)
+[Deploy Istio and ALP](../04-Istio-Install-with-ALP/README.md)
 
 
 ### 4. YaoBank Tutorial
