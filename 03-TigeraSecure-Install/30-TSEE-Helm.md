@@ -1,5 +1,5 @@
 
-# TSEE 2.4 - Manual Install
+# TSEE 2.4 - Helm Install
 
 
 ### 1. Update AKS azure-cni deployment from Bridge mode to Transparent Mode.
