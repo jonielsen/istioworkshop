@@ -23,6 +23,7 @@ Proceed further after every node has rebooted. This might take a few minutes for
 
 ### 2. Deploy TSEE Core
 
+Download the TSEE Helm charts for AKS to your client system and upload to Azure Cloud Shell (for some reason, wget or curl from github directly from within Azure Cloud Shell leads to corrupted files).
 ```
 wget https://github.com/jonielsen/istioworkshop/blob/master/03-TigeraSecure-Install/tigera-secure-ee-core-aks-v2.4.1-0.tgz
 wget https://github.com/jonielsen/istioworkshop/blob/master/03-TigeraSecure-Install/tigera-secure-ee-aks-v2.4.1-0.tgz
