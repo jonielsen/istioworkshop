@@ -90,7 +90,7 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 Deploy Helm
 
 ```
-cat <<-EOF >helm-rbac.yaml
+cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -110,8 +110,6 @@ subjects:
     name: tiller
     namespace: kube-system
 EOF
-
-kubectl apply -f helm-rbac.yaml
 
 helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="linux"
 ```
