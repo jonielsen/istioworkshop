@@ -26,20 +26,15 @@ kubectl apply -f https://docs.tigera.io/v2.4/getting-started/kubernetes/installa
 In the Spec: section, change the service from type: ClusterIP to type: LoadBalancer for each of the services below.
 
 ```
-# OPTION 1: Manually edit each service:
-kubectl edit svc -n istio-system jaeger-query
-kubectl edit svc -n istio-system servicegraph
-kubectl edit svc -n istio-system grafana
-
-# # OPTION 2: You may also patch the services, by doing the following:
 ## Back up your current services:
-kubectl get svc -n istio-system jaeger-query -o yaml > svc-jaeger-query.yaml
-kubectl get svc -n istio-system servicegraph -o yaml > svc-servicegraph.yaml
-kubectl get svc -n istio-system grafana -o yaml > svc-grafana.yaml
+mkdir svc-backups
+kubectl get svc -n istio-system jaeger-query -o yaml > svc-backups/svc-jaeger-query.yaml
+kubectl get svc -n istio-system servicegraph -o yaml > svc-backups/svc-servicegraph.yaml
+kubectl get svc -n istio-system grafana -o yaml > svc-backups/svc-grafana.yaml
 
 ## Then patch the current services in-place:
 kubectl patch svc jaeger-query -n istio-system -p '{"spec": {"ports": [{"port": 16686,"targetPort": 16686,"name": "query-http"}],"type": "LoadBalancer"}}'
-kubectl patch svc servicegraph -n istio-system -p '{"spec": {"ports": [{"port": 8088,"targetPort": 8088,"name": "servicegraph"}],"type": "LoadBalancer"}}'
+kubectl patch svc servicegraph -n istio-system -p '{"spec": {"ports": [{"port": 8088,"targetPort": 8088,"name": "http"}],"type": "LoadBalancer"}}'
 kubectl patch svc grafana -n istio-system -p '{"spec": {"ports": [{"port": 3000,"targetPort": 3000,"name": "http"}],"type": "LoadBalancer"}}'
 ```
 It will take a couple of minutes for the LoadBalancer IP to be assigned by Azure. Repeat the commands below until they each return a Load Balancer IP.
