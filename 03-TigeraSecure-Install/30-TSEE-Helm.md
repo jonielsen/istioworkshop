@@ -35,7 +35,7 @@ Upload these Helm charts along with the Tigera pull secret (aks-tsee-workshop-au
 Deploy TSEE Core
 
 ```
-helm install ./tigera-secure-ee-core-aks-v2.4.1-0.tgz --set-file imagePullSecrets.cnx-pull-secret=./aks-tsee-workshop-auth.json
+helm install ./tigera-secure-ee-core-aks-v2.4.1-0.tgz --name tsee-aks-core --set-file imagePullSecrets.cnx-pull-secret=./aks-tsee-workshop-auth.json
 
 watch kubectl get pods -n kube-system -o wide
 ```
@@ -62,7 +62,7 @@ Deploy TSEE Addons
 
 ```
 kubectl apply -f https://docs.tigera.io/v2.4/getting-started/kubernetes/installation/helm/tigera-secure-ee/operator-crds.yaml
-helm install ./tigera-secure-ee-aks-v2.4.1-0.tgz  --namespace calico-monitoring --set createCustomResources=false --set-file imagePullSecrets.cnx-pull-secret=./aks-tsee-workshop-auth.json
+helm install ./tigera-secure-ee-aks-v2.4.1-0.tgz --name tsee-aks-addons --namespace calico-monitoring --set createCustomResources=false --set-file imagePullSecrets.cnx-pull-secret=./aks-tsee-workshop-auth.json
 watch kubectl get pods --all-namespaces -o wide
 ```
 
