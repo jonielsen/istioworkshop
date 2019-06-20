@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+source ./demo.env
+
+# Create the resource group:
+printf "Creating Azure Resource Group: '${RESOURCE_GROUP_NAME}' \n"
+printf "Running Command: \n"
+printf "az group create --name ${RESOURCE_GROUP_NAME} --location ${LOCATION} \n"
+az group create --name ${RESOURCE_GROUP_NAME} --location ${LOCATION}
+printf "Resource Group ${RESOURCE_GROUP_NAME} exists: $(az group exists -n ${RESOURCE_GROUP_NAME}) \n"

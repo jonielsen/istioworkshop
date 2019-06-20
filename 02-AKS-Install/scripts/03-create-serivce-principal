@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+source demo.env
+
+# Create the resource group:
+printf "Creating a service principal and reading in the application ID: \n"
+export SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
+printf "SP_ID=${SP_ID} \n"
+sed -i .bak "#SP_ID=#s#.*#SP_ID=${SP_ID}#" demo.env
+rm -rf demo.env.bak
+
+#sed -i "s/.*SP_ID=.*/SP_ID=${SP_ID}/" ./demo.env
+
+printf "Waiting for service principal to propagate... \n"
+sleep 15

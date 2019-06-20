@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+source demo.env
+
+# Create the resource group:
+printf "Collecting the virtual network ID: \n"
+
+# Collect the variable VNET_ID:
+export VNET_ID=$(az network vnet show --resource-group ${RESOURCE_GROUP_NAME} --name ${NAME_NET} --query id -o tsv)
+printf "VNET_ID=${VNET_ID} \n"
+awk '{if($1~"VNET_ID=") {$1="'"VNET_ID=${VNET_ID}"'"} print $0}' demo.env > demo.new
+cp -r demo.new demo.env
+
+# Assign SP permissions to virtual network service:
+printf "Assigning the Service Principal Contributor permissions to the virtual network resource: \n"
+az role assignment create --assignee ${SP_ID} --scope ${VNET_ID} --role Contributor
+
+# Collect variable SUBNET_ID:
+SUBNET_ID=$(az network vnet subnet show --resource-group ${RESOURCE_GROUP_NAME} --vnet-name ${NAME_NET} --name ${NAME_SUB} --query id -o tsv)
+printf "SUBNET_ID=${SUBNET_ID} \n"
+awk '{if($1~"SUBNET_ID=") {$1="'"SUBNET_ID=${SUBNET_ID}"'"} print $0}' demo.env > demo.new
+cp -r demo.new demo.env
+
+# Cleanup the demo.new file:
+rm -rf demo.new
+printf "Complete! \n"

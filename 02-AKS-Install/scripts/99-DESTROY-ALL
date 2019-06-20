@@ -1,0 +1,7 @@
+#!/bin/bash
+source ./demo.env
+
+# Create the resource group:
+printf "Destroying Azure Resource Group: '${RESOURCE_GROUP_NAME}'"
+az group delete --name ${RESOURCE_GROUP_NAME} --yes
+printf "Resource Group ${RESOURCE_GROUP_NAME} exists: $(az group exists -n ${RESOURCE_GROUP_NAME}) \n"

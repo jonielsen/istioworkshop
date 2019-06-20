@@ -1,0 +1,22 @@
+#!/bin/bash
+source demo.env
+
+# Get the cluster resource group as a variable:
+export CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group ${RESOURCE_GROUP_NAME} --name ${CLUSTER_NAME} --query nodeResourceGroup -o tsv)
+
+printf "CLUSTER_RESOURCE_GROUP=${CLUSTER_RESOURCE_GROUP} \n"
+awk '{if($1~"CLUSTER_RESOURCE_GROUP=") {$1="'"CLUSTER_RESOURCE_GROUP=${CLUSTER_RESOURCE_GROUP}"'"} print $0}' demo.env > demo.new
+cp -r demo.new demo.env
+
+# Cleanup the demo.new file:
+rm -rf demo.new
+
+# Get the cluster credentials and merge it with the local "${HOME}/.kube/config":
+az aks get-credentials --resource-group ${RESOURCE_GROUP_NAME} --name ${CLUSTER_NAME} --admin
+
+az vm list-ip-addresses --resource-group $CLUSTER_RESOURCE_GROUP -o table
+
+
+
+az aks get-credentials --resource-group ${RESOURCE_GROUP_NAME} --name ${CLUSTER_NAME} --admin
+az vm list --resource-group ${CLUSTER_RESOURCE_GROUP} -o table

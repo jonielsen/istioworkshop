@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+source demo.env
+
+# Create the resource group:
+printf "Creating Azure Virtual Network: '${NAME_NET}' \n"
+printf "Running Command: \n"
+printf "az network vnet create \\
+--resource-group ${RESOURCE_GROUP_NAME} \\
+--name ${NAME_NET} \\
+--address-prefixes ${CIDR_ADDR_PREFIX} \\
+--subnet-name ${NAME_SUB} \\
+--subnet-prefix ${CIDR_SUB_PREFIX} \n"
+
+az network vnet create \
+--resource-group ${RESOURCE_GROUP_NAME} \
+--name ${NAME_NET} \
+--address-prefixes ${CIDR_ADDR_PREFIX} \
+--subnet-name ${NAME_SUB} \
+--subnet-prefix ${CIDR_SUB_PREFIX}
