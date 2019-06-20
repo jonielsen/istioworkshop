@@ -46,6 +46,7 @@ kubectl get svc -n istio-system jaeger-query -o 'jsonpath={.status.loadBalancer.
 kubectl get svc -n istio-system servicegraph -o 'jsonpath={.status.loadBalancer.ingress[*].ip}'
 ```
 
-The corresponding URLs to browse to are http://GrafanaIP:3000/dashboard/db/istio-mesh-dashboard http://jaeger-queryIP:16686/ and http://ServiceGraphIP:8088/force/forcegraph.html
+The corresponding URLs to browse to are:<br>
+http://GrafanaIP:3000/dashboard/db/istio-mesh-dashboard http://jaeger-queryIP:16686/<br> http://ServiceGraphIP:8088/force/forcegraph.html<br>
 
 
