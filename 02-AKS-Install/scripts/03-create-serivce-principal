@@ -3,12 +3,14 @@ source demo.env
 
 # Create the resource group:
 printf "Creating a service principal and reading in the application ID: \n"
-export SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
+SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
 printf "SP_ID=${SP_ID} \n"
-sed -i .bak "#SP_ID=#s#.*#SP_ID=${SP_ID}#" demo.env
-rm -rf demo.env.bak
+awk '{if($1~"SP_ID=") {$1="'"SP_ID=${SP_ID}"'"} print $0}' demo.env > demo.new
+cp -r demo.new demo.env
 
-#sed -i "s/.*SP_ID=.*/SP_ID=${SP_ID}/" ./demo.env
+# Cleanup the demo.new file:
+rm -rf demo.new
+
 
 printf "Waiting for service principal to propagate... \n"
 sleep 15
