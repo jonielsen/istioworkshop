@@ -105,7 +105,7 @@ spec:
                   fieldPath: spec.nodeName
           command:
             - /usr/bin/kured
-            - --period=15s
+            - --period=10s
 #            - --alert-filter-regexp=^RebootRequired$
 #            - --blocking-pod-selector=runtime=long,cost=expensive
 #            - --blocking-pod-selector=name=temperamental
