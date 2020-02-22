@@ -121,11 +121,14 @@ spec:
 
 ---
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: bridge2transparent
 spec:
+  selector:
+    matchLabels:
+      run-once-daemonset: bridge2transparent
   template:
     metadata:
       labels:
