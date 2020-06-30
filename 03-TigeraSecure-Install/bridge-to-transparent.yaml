@@ -8,7 +8,7 @@ rules:
 # Allow kubectl to drain/uncordon
 #
 # NB: These permissions are tightly coupled to the bundled version of kubectl; the ones below
-# match https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/drain/drain.go
+# match https://github.com/kubernetes/kubernetes/blob/v1.12.1/pkg/kubectl/cmd/drain.go
 #
 - apiGroups: [""]
   resources: ["nodes"]
@@ -92,7 +92,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: kured
-          image: docker.io/weaveworks/kured:1.2.0
+          image: docker.io/weaveworks/kured:1.4.0
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true # Give permission to nsenter /proc/1/ns/mnt
